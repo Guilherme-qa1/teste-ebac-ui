@@ -23,3 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', (usuario, senha) => {
+    cy.get('[name="username"]').type(usuario)
+    cy.get('.woocommerce-form > :nth-child(2) > [name="password"]').type(senha)
+    cy.get('[name="login"]').click()
+})

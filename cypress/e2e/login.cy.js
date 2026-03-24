@@ -17,7 +17,7 @@ context('Funcionalidade Login', () => {
         cy.get('.page-title').should('contain', 'Minha conta')
     })
 
-    it.only('Deve fazer login com sucesso - fixture', () => {
+    it('Deve fazer login com sucesso - fixture', () => {
         cy.fixture('perfil').then(dados => {
             cy.get('[name="username"]').type(dados.usuario, {log: false})
             cy.get('.woocommerce-form > :nth-child(2) > [name="password"]').type(dados.senha, {log: false})
