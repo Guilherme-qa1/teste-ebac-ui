@@ -49,3 +49,15 @@ Cypress.Commands.add('addProdutos', (produto, tamanho, cor, quantidade) => {
     cy.get('[name="quantity"]').clear().type(quantidade)
     cy.get('.single_add_to_cart_button').click()
 })
+
+
+
+
+
+
+Cypress.Commands.add('loginAprende', (email, password) => {
+    cy.get('[name="username"]').type(email)
+    cy.get('.woocommerce-form > :nth-child(2) > [name="password"]').type(password, {log:false})
+    cy.get('[name="login"]').click()
+    cy.get('.page-title').should('contain', 'Minha conta')
+})
