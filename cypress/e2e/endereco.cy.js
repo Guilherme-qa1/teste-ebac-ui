@@ -1,6 +1,8 @@
 ///<reference types = "cypress"/>
-import EnderecoPage from '../support/page-objects/endereco.page'
-const infoEndereco = require ('../fixtures/endereco.json')
+import EnderecoPage from '../support/page-objects/endereco.page';
+///import EnderecoPage from '../support/page-objects/endereco.page'
+const infoEndereco = require('../fixtures/endereco.json')
+const infoEntrega = require('../fixtures/entrega.json')
 
 describe('Funcionalidade Endereços - Faturamento e Entrega', () => {
     beforeEach(() => {
@@ -16,19 +18,34 @@ describe('Funcionalidade Endereços - Faturamento e Entrega', () => {
         cy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso.')
     });
 
-    it.only('Deve fazer cadastro de faturamento com sucesso - Usando Arquivo de Dados', () => {
+    it('Deve fazer cadastro de faturamento com sucesso - Usando Arquivo de Dados', () => {
         EnderecoPage.editarEnderecoFaturamento(
-            infoEndereco[1].nome,
-            infoEndereco[1].sobrenome,
-            infoEndereco[1].empresa,
-            infoEndereco[1].pais,
-            infoEndereco[1].endereco,
-            infoEndereco[1].numero,
-            infoEndereco[1].cidade,
-            infoEndereco[1].estado,
-            infoEndereco[1].cep,
-            infoEndereco[1].telefone,
-            infoEndereco[1].email
+            infoEndereco[0].nome,
+            infoEndereco[0].sobrenome,
+            infoEndereco[0].empresa,
+            infoEndereco[0].pais,
+            infoEndereco[0].endereco,
+            infoEndereco[0].numero,
+            infoEndereco[0].cidade,
+            infoEndereco[0].estado,
+            infoEndereco[0].cep,
+            infoEndereco[0].telefone,
+            infoEndereco[0].email
+        )
+        cy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso.')
+    });
+
+    it.only('Deve fazer cadastro de ENTREGA com sucesso - Usando arquivo de dados', () => {
+        EnderecoPage.editarEnderecoEntrega(
+            infoEntrega[0].nome,
+            infoEntrega[0].sobrenome,
+            infoEntrega[0].empresa,
+            infoEntrega[0].pais,
+            infoEntrega[0].endereco,
+            infoEntrega[0].numero,
+            infoEntrega[0].cidade,
+            infoEntrega[0].estado,
+            infoEntrega[0].cep
         )
         cy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso.')
     });
